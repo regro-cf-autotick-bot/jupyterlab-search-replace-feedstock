@@ -1,5 +1,5 @@
 {% set name = "jupyterlab_search_replace" %}
-{% set version = "0.1.0" %}
+{% set version = "1.0.0" %}
 
 package:
   name: {{ name|lower|replace("_", "-") }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 6d6498d3e5ea3a9259268973817ed7d62d3ef34b618acd4b1e88b5a0c37a575e
+  sha256: bfd5186b48f48cb943bae276cf78c3cc1c4bd5362276b57a67df2dce26ff72b8
 
 build:
   number: 0
@@ -40,7 +40,7 @@ test:
 
 about:
   home: https://github.com/jupyterlab-contrib/search-replace
-  summary: 'Search and replace across files'
+  summary: Search and replace across files
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
