@@ -1,5 +1,5 @@
 {% set name = "jupyterlab_search_replace" %}
-{% set version = "1.0.2" %}
+{% set version = "1.1.0" %}
 
 package:
   name: {{ name|lower|replace("_", "-") }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 6746d66ec82ef7e7a935480f6a8d1693f088c2f6f6756450e0f49ce0d30e67d2
+  sha256: f139bd7de9aa9b9c67a6fa4e0354ade4d9c07e8458e32f0287661c30db91723f
 
 build:
   number: 0
@@ -16,20 +16,22 @@ build:
 
 requirements:
   host:
-    - python >=3.7,<4.0
+    - hatch-jupyter-builder >=0.5
+    - hatch-nodejs-version
+    - hatchling >=1.5.0
+    - jupyterlab >=3,<5
     - pip
-    - jupyterlab =3
-    - jupyter-packaging >=0.10,<2.0
+    - python >=3.7,<4.0
   run:
     - python >=3.7,<4.0
-    - jupyter_server >=1.0,<2.0
+    - jupyter_server >=1.0,<3.0
     - ripgrep
 
 test:
   imports:
     - jupyterlab_search_replace
   requires:
-    - jupyterlab =3
+    - jupyterlab =4
     - pip
   commands:
     - pip check
