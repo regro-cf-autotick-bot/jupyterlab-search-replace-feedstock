@@ -6,11 +6,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: f139bd7de9aa9b9c67a6fa4e0354ade4d9c07e8458e32f0287661c30db91723f
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
@@ -21,9 +21,9 @@ requirements:
     - hatchling >=1.5.0
     - jupyterlab >=3,<5
     - pip
-    - python >=3.7,<4.0
+    - python {{ python_min }}
   run:
-    - python >=3.7,<4.0
+    - python >={{ python_min }},<4.0
     - jupyter_server >=1.0,<3.0
     - ripgrep
 
@@ -33,6 +33,7 @@ test:
   requires:
     - jupyterlab =4
     - pip
+    - python {{ python_min }}
   commands:
     - pip check
     - jupyter server extension list
